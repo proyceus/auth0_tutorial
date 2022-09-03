@@ -5,7 +5,17 @@ const Profile = () => {
 
   return (
     isAuthenticated && (
-      <article className="column">{JSON.stringify(user)}</article>
+      <article className="column">
+        {user?.picture && <img src={user.picture} alt={user?.name} />}
+        <h2>{user?.name}</h2>
+        <ul>
+          {Object.keys(user).map((objKey, index) => (
+            <li key={index}>
+              {objKey}: {user[objKey]}
+            </li>
+          ))}
+        </ul>
+      </article>
     )
   );
 };
